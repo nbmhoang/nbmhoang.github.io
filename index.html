@@ -50,13 +50,17 @@
 				-webkit-transform: skewY(45deg);
 				transform: skewY(45deg);
 			}
+			#result {
+				margin-top: 10px;
+				text-align: center;
+				font-size: 18px;
+			}
 		</style>
 		<script>
 			$( document ).ready(function(){
 				  /* choose numbers from table and show changes in table */
 				  $( "#random" ).click(function() {
 					const number = 0 + Math.floor(Math.random() * 99);
-					console.log(number);
 					let suggested;
 					$('td').each(function(index) {
 						if (parseInt($(this).text()) === number) {
@@ -67,7 +71,12 @@
 					})
 					suggested.addClass('selected');
 				  });
-				  
+				  $( "#rrandom" ).click(() => {
+					const number = 0 + Math.floor(Math.random() * 99);
+					const firstVal = parseInt(number / 10);
+					const val = `Uýnh lô từ <b>${firstVal}0</b> tới <b>${firstVal}9</b>`;
+					$('#result').html(val);
+				  })
 				});
 		</script>
 	</head>
@@ -197,7 +206,9 @@
 		<div>
 		<button type="button" class="btn btn-danger" id="random"> RANDOM </button>      
 		<button type="button" class="btn btn-primary" id="save"> SAVE </button>
-		<div>
+		<button type="button" class="btn btn-info" id="rrandom"> RRANDOM </button>
+		</div>
+		<div id="result"></div>
 	</body>
 </html>
 
